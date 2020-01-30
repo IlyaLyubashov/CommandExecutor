@@ -15,3 +15,17 @@ C:\Users\днс\Desktop\C#\MyProjects\ConsoleCommander\ConsoleCommander\obj\Debu
 C:\Users\днс\Desktop\C#\MyProjects\ConsoleCommander\ConsoleCommander\obj\Debug\netcoreapp3.0\ConsoleCommander.pdb
 C:\Users\днс\Desktop\C#\MyProjects\ConsoleCommander\ConsoleCommander\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
 C:\Users\днс\Desktop\C#\MyProjects\ConsoleCommander\ConsoleCommander\obj\Debug\netcoreapp3.0\ConsoleCommander.csprojAssemblyReference.cache
+C:\Projects\CommandExecutor\ConsoleCommander\bin\Debug\netcoreapp3.0\ConsoleCommander.exe
+C:\Projects\CommandExecutor\ConsoleCommander\bin\Debug\netcoreapp3.0\ConsoleCommander.deps.json
+C:\Projects\CommandExecutor\ConsoleCommander\bin\Debug\netcoreapp3.0\ConsoleCommander.runtimeconfig.json
+C:\Projects\CommandExecutor\ConsoleCommander\bin\Debug\netcoreapp3.0\ConsoleCommander.runtimeconfig.dev.json
+C:\Projects\CommandExecutor\ConsoleCommander\bin\Debug\netcoreapp3.0\ConsoleCommander.dll
+C:\Projects\CommandExecutor\ConsoleCommander\bin\Debug\netcoreapp3.0\ConsoleCommander.pdb
+C:\Projects\CommandExecutor\ConsoleCommander\bin\Debug\netcoreapp3.0\NAudio.dll
+C:\Projects\CommandExecutor\ConsoleCommander\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Projects\CommandExecutor\ConsoleCommander\obj\Debug\netcoreapp3.0\ConsoleCommander.csprojAssemblyReference.cache
+C:\Projects\CommandExecutor\ConsoleCommander\obj\Debug\netcoreapp3.0\ConsoleCommander.AssemblyInfoInputs.cache
+C:\Projects\CommandExecutor\ConsoleCommander\obj\Debug\netcoreapp3.0\ConsoleCommander.AssemblyInfo.cs
+C:\Projects\CommandExecutor\ConsoleCommander\obj\Debug\netcoreapp3.0\ConsoleCommander.csproj.CopyComplete
+C:\Projects\CommandExecutor\ConsoleCommander\obj\Debug\netcoreapp3.0\ConsoleCommander.dll
+C:\Projects\CommandExecutor\ConsoleCommander\obj\Debug\netcoreapp3.0\ConsoleCommander.pdb

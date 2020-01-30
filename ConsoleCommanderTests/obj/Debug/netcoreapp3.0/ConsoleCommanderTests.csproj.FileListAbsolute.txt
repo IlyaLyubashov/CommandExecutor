@@ -96,3 +96,8 @@ C:\Users\днс\Desktop\C#\MyProjects\ConsoleCommander\ConsoleCommanderTests\bin
 C:\Users\днс\Desktop\C#\MyProjects\ConsoleCommander\ConsoleCommanderTests\bin\Debug\netcoreapp3.0\nunit.engine.api.dll
 C:\Users\днс\Desktop\C#\MyProjects\ConsoleCommander\ConsoleCommanderTests\bin\Debug\netcoreapp3.0\Microsoft.DotNet.InternalAbstractions.dll
 C:\Users\днс\Desktop\C#\MyProjects\ConsoleCommander\ConsoleCommanderTests\bin\Debug\netcoreapp3.0\System.Xml.XPath.XmlDocument.dll
+C:\Projects\CommandExecutor\ConsoleCommanderTests\obj\Debug\netcoreapp3.0\ConsoleCommanderTests.csprojAssemblyReference.cache
+C:\Projects\CommandExecutor\ConsoleCommanderTests\obj\Debug\netcoreapp3.0\ConsoleCommanderTests.AssemblyInfoInputs.cache
+C:\Projects\CommandExecutor\ConsoleCommanderTests\obj\Debug\netcoreapp3.0\ConsoleCommanderTests.AssemblyInfo.cs
+C:\Projects\CommandExecutor\ConsoleCommanderTests\obj\Debug\netcoreapp3.0\ConsoleCommanderTests.dll
+C:\Projects\CommandExecutor\ConsoleCommanderTests\obj\Debug\netcoreapp3.0\ConsoleCommanderTests.pdb

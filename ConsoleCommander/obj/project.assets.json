@@ -80,30 +80,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\днс\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\illub\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\днс\\Desktop\\C#\\MyProjects\\ConsoleCommander\\ConsoleCommander\\ConsoleCommander.csproj",
+      "projectUniqueName": "C:\\Projects\\CommandExecutor\\ConsoleCommander\\ConsoleCommander.csproj",
       "projectName": "ConsoleCommander",
-      "projectPath": "C:\\Users\\днс\\Desktop\\C#\\MyProjects\\ConsoleCommander\\ConsoleCommander\\ConsoleCommander.csproj",
-      "packagesPath": "C:\\Users\\днс\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\днс\\Desktop\\C#\\MyProjects\\ConsoleCommander\\ConsoleCommander\\obj\\",
+      "projectPath": "C:\\Projects\\CommandExecutor\\ConsoleCommander\\ConsoleCommander.csproj",
+      "packagesPath": "C:\\Users\\illub\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\CommandExecutor\\ConsoleCommander\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\днс\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\illub\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "\\\\192.168.3.67\\NuGetStorages\\FastReport": {},
+        "\\\\192.168.3.67\\NuGetStorages\\PlatformFinanceNetCore": {},
+        "\\\\192.168.3.67\\NuGetStorages\\PlatformNetCore": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -139,12 +140,30 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.0.1, 3.0.1]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.0.2, 3.0.2]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
