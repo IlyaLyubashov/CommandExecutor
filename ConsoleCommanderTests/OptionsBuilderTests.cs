@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using NUnit;
 using NUnit.Framework;
 using ConsoleCommander;
+using ConsoleCommander.Options;
 
 namespace ConsoleCommanderTests
 {

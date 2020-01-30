@@ -22,12 +22,15 @@ namespace ConsoleCommander.Options
         {
             OptionAction(GetArguments(), AdditionalArgumentsForNextInvoke);
             AdditionalArgumentsForNextInvoke = null;
+            ResetArguments();
         }
 
         public IEnumerable<object> AdditionalArgumentsForNextInvoke { get; set; }
 
         public void SetAllArguments(IEnumerable<string> args)
-            => arguments = args.ToList();
+        {
+            args.ToList().ForEach(arg => SetArgument(arg));
+        }
 
 
         public bool IsPreFuncOption { get; set; } = false;

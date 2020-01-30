@@ -36,19 +36,19 @@ namespace ConsoleCommander.Interfaces
 
             //переписывать все под option, потому что передаются копии, а мы тут пытаемся оригинал вызывать
             // as OptionAction => if(OptionAction and )
-            InvokeOptionsActions(optsForInvoke.Where(o => o is ActionOption),true);
+            InvokeOptionsActions(optsForInvoke,true);
             Invoke(GetFuncArguments(optsForInvoke),optsForInvoke.ToDictionary(o => o.FullName ?? "function arguments", o => o));
-            InvokeOptionsActions(optsForInvoke.Where(o => o is ActionOption ), false);
+            InvokeOptionsActions(optsForInvoke, false);
         }
 
 
         protected abstract void Invoke(IEnumerable<string> funcArguments,IDictionary<string, Option> fullNameToOption);
 
 
-        private void InvokeOptionsActions(IEnumerable<Option> actOpts, bool isPreFunc)
+        private void InvokeOptionsActions(IEnumerable<Option> optsForInvoke, bool isPreFunc)
         {
             var optionsToWorkWith = isPreFunc ? preFunc : postFunc;
-            actOpts.ToList().ForEach(o =>
+            optsForInvoke.ToList().ForEach(o =>
             {
                 if (o.IsOptionSet)
                 {
@@ -56,6 +56,7 @@ namespace ConsoleCommander.Interfaces
                     if (properOpt != null)
                     {
                         properOpt.SetAllArguments(o.GetArguments());
+                        properOpt.InvokeOptionAction();
                     }
                 }
             });

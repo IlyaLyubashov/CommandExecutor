@@ -47,7 +47,6 @@ namespace ConsoleCommander.Options
                 if (!curOption.SetArgument(param))
                     throw new ArgumentOutOfRangeException(param, $"Option {curOption.FullName} can take {curOption.argumentsRequired} arguments. " +
                     $"You passed more.");
-                curOption.StartSetArguments();
             }
                         
         }
@@ -75,7 +74,6 @@ namespace ConsoleCommander.Options
                     throw new ArgumentException("Function arguments can be passed only once.");
                 if(!paramForFunctionArgs.SetArgument(param))
                     throw new ArgumentException("Function has 'null' option for arguments, but it doesn't take arguments.");
-                paramForFunctionArgs.StartSetArguments();
                 return paramForFunctionArgs;
             }
 

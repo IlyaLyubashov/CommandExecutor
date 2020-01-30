@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.IO;
+using System.Globalization;
 
 namespace ConsoleCommander.Commands
 {
@@ -13,6 +14,7 @@ namespace ConsoleCommander.Commands
     public static class TimerActions
     {
         public const string PATH_TO_TXT_WORKER = @"C:\Users\днс\Desktop\trackers\work tracker.txt";
+        public const int AMOUNT_HOURS_AFTER_0000_NOT_NEXT_DAY = 5;
 
 
         public static void WriteToWorker(IEnumerable<string> arguments, IEnumerable<object> additions)
@@ -26,14 +28,15 @@ namespace ConsoleCommander.Commands
             using (var fileReader = new StreamReader(workerPath))
             {
                 txt = fileReader.ReadToEnd();
-                lastEntity = WorkTrackerEntityInterctions.ParseLine(txt.Split('n').Last());
+                lastEntity = WorkTrackerEntityInterctions.ParseLine(txt.Split('\n').Last());
             }
 
 
             using (var fileWriter = new StreamWriter(workerPath, false))
             {
-                if ((lastEntity.Date.Year, lastEntity.Date.Month, lastEntity.Date.Date)
-                    .CompareTo((DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Date)) == 0)
+                var trulyCompareDate = DateTime.Now.Hour < AMOUNT_HOURS_AFTER_0000_NOT_NEXT_DAY ? new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 1) : DateTime.Today; 
+                if ((lastEntity.Date.Year, lastEntity.Date.Month, lastEntity.Date.Day)
+                    .CompareTo((trulyCompareDate.Year, trulyCompareDate.Month, trulyCompareDate.Day)) == 0)
                 {
                     lastEntity.RealTime += workedTime;
                     var txtSplit = txt.Split('\n', StringSplitOptions.RemoveEmptyEntries);
@@ -65,7 +68,7 @@ namespace ConsoleCommander.Commands
 
         public override string ToString()
         {
-            return $"{Date.Date}.{Date.Month}.{Date.Year}\t{(Planned == null ? WorkTrackerEntityInterctions.NULL_SIGN : Planned.ToString())}\t" +
+            return $"{Date.Day}.{Date.Month}.{Date.Year}\t{(Planned == null ? WorkTrackerEntityInterctions.NULL_SIGN : Planned.ToString())}\t" +
                 $"{(EstimatedTime == null ? WorkTrackerEntityInterctions.NULL_SIGN : EstimatedTime.Value.TotalHours.ToString())}\t" +
                 $"{(Done == null ? WorkTrackerEntityInterctions.NULL_SIGN : Done.ToString())}\t" +
                 $"{(RealTime == null ? WorkTrackerEntityInterctions.NULL_SIGN : RealTime.Value.TotalHours.ToString())}\n";
@@ -91,9 +94,9 @@ namespace ConsoleCommander.Commands
             {
                 Date = new DateTime(date[2], date[1], date[0]),
                 Planned = fields[1] == null ? null : (int?)int.Parse(fields[1]),
-                EstimatedTime = fields[2] == null ? null : (TimeSpan?)TimeSpan.FromHours(double.Parse(fields[2])),
+                EstimatedTime = fields[2] == null ? null : (TimeSpan?)TimeSpan.FromHours(double.Parse(fields[2], CultureInfo.InvariantCulture)),
                 Done = fields[3] == null ? null : (int?)int.Parse(fields[1]),
-                RealTime = fields[4] == null ? null : (TimeSpan?)TimeSpan.FromHours(double.Parse(fields[4]))
+                RealTime = fields[4] == null ? null : (TimeSpan?)TimeSpan.FromHours(double.Parse(fields[4], CultureInfo.InvariantCulture))
             };
             return entity;
         }

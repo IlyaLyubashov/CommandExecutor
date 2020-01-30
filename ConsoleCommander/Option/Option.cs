@@ -57,9 +57,6 @@ namespace ConsoleCommander
 
         public bool IsFunctionArgs => ShortName == null && FullName == null;
 
-
-        public void StartSetArguments() => IsArgumentSetStarted = true;
-
         public void MakeOptionSet() => IsOptionSet = true;
 
 
@@ -68,9 +65,13 @@ namespace ConsoleCommander
 
         public IEnumerable<string> GetArguments() => IsArgumentSetStarted ? arguments : defaultArguments;
 
+        protected void ResetArguments() => arguments = new List<string>();
+
+        private void ArgumentSetStarted() => IsArgumentSetStarted = true;
 
         public bool SetArgument(string arg)
         {
+            ArgumentSetStarted();
             while (arguments.Count < maxArgsPassed)
             {
                 arguments.Add(arg);
