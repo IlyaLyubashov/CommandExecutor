@@ -40,6 +40,7 @@ namespace ConsoleCommander.Commands
             if (commands.ContainsKey(cmdName))
             {
                 var cmd = commands[cmdName];
+                cmd.SentOut = (str) => _outIO.WriteLine(str);
                 var opts = OptionsParser.Parse(args, cmd.GetPossibleOptions());
                 cmd.Invoke(opts);
             }

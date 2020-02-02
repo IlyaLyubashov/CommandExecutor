@@ -65,9 +65,9 @@ namespace ConsoleCommander
 
         public IEnumerable<string> GetArguments() => IsArgumentSetStarted ? arguments : defaultArguments;
 
-        protected void ResetArguments() => arguments = new List<string>();
-
         private void ArgumentSetStarted() => IsArgumentSetStarted = true;
+
+        protected void ResetArguments() => arguments = new List<string>();
 
         public bool SetArgument(string arg)
         {

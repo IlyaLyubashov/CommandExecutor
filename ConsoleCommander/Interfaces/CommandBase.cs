@@ -31,6 +31,9 @@ namespace ConsoleCommander.Interfaces
         public abstract string Info { get; }
 
 
+        public Action<string> SentOut { get; set; }
+
+
         public void Invoke(IEnumerable<Option> optsForInvoke)
         {
 
@@ -44,7 +47,11 @@ namespace ConsoleCommander.Interfaces
 
         protected abstract void Invoke(IEnumerable<string> funcArguments,IDictionary<string, Option> fullNameToOption);
 
-
+        /// <summary>
+        /// От парсера получаем набор Option, а не ActionOption. Передаем нужным ActionOption'aм аргументы.
+        /// </summary>
+        /// <param name="optsForInvoke"></param>
+        /// <param name="isPreFunc"></param>
         private void InvokeOptionsActions(IEnumerable<Option> optsForInvoke, bool isPreFunc)
         {
             var optionsToWorkWith = isPreFunc ? preFunc : postFunc;

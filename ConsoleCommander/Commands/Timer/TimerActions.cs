@@ -4,6 +4,7 @@ using System.Text;
 using System.Linq;
 using System.IO;
 using System.Globalization;
+using System.Data.SqlClient;
 
 namespace ConsoleCommander.Commands
 {
@@ -13,11 +14,13 @@ namespace ConsoleCommander.Commands
     /// </summary>
     public static class TimerActions
     {
+        //TODO: вынести в конфиг
         public const string PATH_TO_TXT_WORKER = @"C:\Users\днс\Desktop\trackers\work tracker.txt";
+        public const string DB_CONNECTION_STRING = @"Data Source=DESKTOP-32I0HVH\SQLEXPRESS;Database=MyDataBase;Integrated Security=True";
         public const int AMOUNT_HOURS_AFTER_0000_NOT_NEXT_DAY = 5;
 
 
-        public static void WriteToWorker(IEnumerable<string> arguments, IEnumerable<object> additions)
+        public static void WriteToTxtWorker(IEnumerable<string> arguments, IEnumerable<object> additions)
         {
             var workerPath = arguments.First();
             var workedTime = (TimeSpan)additions.First();
@@ -53,6 +56,52 @@ namespace ConsoleCommander.Commands
                     };
                     fileWriter.Write(txt + "\n" + entity.ToString());
                 }
+            }
+        }
+
+        public static void WriteToDbWorker(IEnumerable<string> arguments, IEnumerable<object> additions)
+        {
+            void InsertToday(SqlCommand cmd, string timeToWrite)
+            {
+                cmd.CommandText = "insert into WorkTracker(date,real_time) values(@date,@time)";
+                cmd.Parameters.AddWithValue("@date", DateTime.Now);
+                cmd.Parameters.AddWithValue("@time", timeToWrite);
+                cmd.ExecuteNonQuery();
+            }
+
+
+            var timeToWriteInHours = ((TimeSpan)additions.First()).TotalHours.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
+            using (var con = new SqlConnection(arguments.First()))
+            {
+                con.Open();
+                var cmd = con.CreateCommand();
+                cmd.CommandText = "select date,real_time from WorkTracker order by date desc";
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    var lastDay = reader.GetDateTime(0);
+                    reader.Close();
+                    var trulyCompareDate = DateTime.Now.Hour < AMOUNT_HOURS_AFTER_0000_NOT_NEXT_DAY ?
+                        new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 1) : DateTime.Today;
+                    if ((lastDay.Year, lastDay.Month, lastDay.Day)
+                        .CompareTo((trulyCompareDate.Year, trulyCompareDate.Month, trulyCompareDate.Day)) == 0)
+                    {
+                        cmd.CommandText = "update WorkTracker set real_time = real_time + @time where date = @today";
+                        cmd.Parameters.AddWithValue("@time", timeToWriteInHours);
+                        cmd.Parameters.AddWithValue("@today", trulyCompareDate);
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                        InsertToday(cmd, timeToWriteInHours);
+                }
+                else
+                {
+                    reader.Close();
+                    InsertToday(cmd, timeToWriteInHours);
+                }
+                    
             }
         }
     }

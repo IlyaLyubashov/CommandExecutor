@@ -39,8 +39,8 @@ namespace ConsoleCommander.Commands
             AddOption("-mp", "--melody-path", 1, new string[] { @"C:\Windows\Media\Alarm04.wav" });
             AddOption("-r", "--repeat", 1, new string[] { "1" });
 
-            writeToWorker = new ActionOption("-w", "--write-to-worker", 1, TimerActions.WriteToWorker);
-            writeToWorker.SetDefaultArguments(new string[] { TimerActions.PATH_TO_TXT_WORKER });
+            writeToWorker = new ActionOption("-w", "--write-to-worker", 1, TimerActions.WriteToDbWorker);
+            writeToWorker.SetDefaultArguments(new string[] { TimerActions.DB_CONNECTION_STRING });
             AddPostFuncOption(writeToWorker);
         }
 
@@ -52,6 +52,7 @@ namespace ConsoleCommander.Commands
 
         void TimerActivity(TimerSettings settings)
         {
+            SentOut($"Timer started for {settings.TimeToSleep.TotalMinutes} minutes.");
             Thread.Sleep(settings.TimeToSleep);
             var rep = settings.RepeatTimes;
             while (rep-- != 0)
