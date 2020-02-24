@@ -38,12 +38,11 @@ namespace ConsoleCommander.Interfaces
         {
 
             //переписывать все под option, потому что передаются копии, а мы тут пытаемся оригинал вызывать
-            // as OptionAction => if(OptionAction and )
-            InvokeOptionsActions(optsForInvoke,true);
-            Invoke(GetFuncArguments(optsForInvoke),optsForInvoke.ToDictionary(o => o.FullName ?? "function arguments", o => o));
+            // as OptionAction => if(OptionAction and )         
+            InvokeOptionsActions(optsForInvoke, true);
+            Invoke(GetFuncArguments(optsForInvoke), optsForInvoke.ToDictionary(o => o.FullName ?? "function arguments", o => o));
             InvokeOptionsActions(optsForInvoke, false);
         }
-
 
         protected abstract void Invoke(IEnumerable<string> funcArguments,IDictionary<string, Option> fullNameToOption);
 
@@ -76,7 +75,7 @@ namespace ConsoleCommander.Interfaces
         }
 
 
-        protected void AddOption(string shortName, string fullName, int minArgs, int maxArgs, IEnumerable<string> defaults)
+        protected void AddOption(string shortName, string fullName, int minArgs, int maxArgs, IEnumerable<string> defaults = null)
         {
             if (string.IsNullOrEmpty(fullName) && !string.IsNullOrEmpty(shortName))
                 throw new ArgumentNullException("Command must have full name.");
@@ -89,9 +88,11 @@ namespace ConsoleCommander.Interfaces
         }
 
 
-        protected void AddOption(string shortName, string fullName, int minArgs, IEnumerable<string> defaults)
+        protected void AddOption(string shortName, string fullName, int minArgs, IEnumerable<string> defaults = null)
             => AddOption(shortName, fullName, minArgs, minArgs, defaults);
 
+        protected void AddOption(string shortName, string fullName)
+            => AddOption(shortName, fullName, 0, null);
 
         public IEnumerable<Option> GetPossibleOptions() =>  
             DeepCopy.Make(options.Concat(preFunc).Concat(postFunc));

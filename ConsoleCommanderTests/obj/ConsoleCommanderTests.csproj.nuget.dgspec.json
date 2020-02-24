@@ -24,6 +24,9 @@
         "sources": {
           "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "\\\\192.168.3.67\\NuGetStorages\\FastReport": {},
+          "\\\\192.168.3.67\\NuGetStorages\\PlatformFinanceNetCore": {},
+          "\\\\192.168.3.67\\NuGetStorages\\PlatformNetCore": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,8 +56,10 @@
               "version": "[3.12.0, )"
             },
             "NUnit3TestAdapter": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.15.1, )"
+              "version": "[3.16.1, )"
             }
           },
           "imports": [
@@ -110,6 +115,9 @@
         "sources": {
           "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "\\\\192.168.3.67\\NuGetStorages\\FastReport": {},
+          "\\\\192.168.3.67\\NuGetStorages\\PlatformFinanceNetCore": {},
+          "\\\\192.168.3.67\\NuGetStorages\\PlatformNetCore": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

@@ -5,6 +5,7 @@ using System.Collections.Immutable;
 using ConsoleCommander.Interfaces;
 using System.IO;
 using ConsoleCommander.Options;
+using System.Threading.Tasks;
 
 namespace ConsoleCommander.Commands
 {
@@ -40,9 +41,16 @@ namespace ConsoleCommander.Commands
             if (commands.ContainsKey(cmdName))
             {
                 var cmd = commands[cmdName];
-                cmd.SentOut = (str) => _outIO.WriteLine(str);
+                cmd.SentOut = (str) =>
+                {
+                    if (_outIO == Console.Out)
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    _outIO.WriteLine(str);
+                    if (_outIO == Console.Out)
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                };
                 var opts = OptionsParser.Parse(args, cmd.GetPossibleOptions());
-                cmd.Invoke(opts);
+                Task.Run(() => cmd.Invoke(opts));
             }
                 
         }

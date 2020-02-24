@@ -67,7 +67,11 @@ namespace ConsoleCommander
 
         private void ArgumentSetStarted() => IsArgumentSetStarted = true;
 
-        protected void ResetArguments() => arguments = new List<string>();
+        protected void ResetArguments()
+        {
+            arguments = new List<string>();
+            IsArgumentSetStarted = false;
+        } 
 
         public bool SetArgument(string arg)
         {
