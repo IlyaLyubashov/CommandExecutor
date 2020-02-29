@@ -49,7 +49,7 @@ namespace ConsoleCommander.Commands
                     if (_outIO == Console.Out)
                         Console.ForegroundColor = ConsoleColor.Gray;
                 };
-                var opts = OptionsParser.Parse(args, cmd.GetPossibleOptions());
+                var opts = OptionsParser.Parse(args, cmd.GetPossibleOptions(args));
                 Task.Run(() => cmd.Invoke(opts));
             }
                 

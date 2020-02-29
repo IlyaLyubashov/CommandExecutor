@@ -87,6 +87,9 @@ namespace ConsoleCommander.Interfaces
             options.Add(opt);
         }
 
+        protected void AddOptions(IEnumerable<Option> opts) =>
+            options.AddRange(opts);
+
 
         protected void AddOption(string shortName, string fullName, int minArgs, IEnumerable<string> defaults = null)
             => AddOption(shortName, fullName, minArgs, minArgs, defaults);
@@ -94,7 +97,7 @@ namespace ConsoleCommander.Interfaces
         protected void AddOption(string shortName, string fullName)
             => AddOption(shortName, fullName, 0, null);
 
-        public IEnumerable<Option> GetPossibleOptions() =>  
+        public virtual IEnumerable<Option> GetPossibleOptions(IEnumerable<string> args) =>  
             DeepCopy.Make(options.Concat(preFunc).Concat(postFunc));
 
 
